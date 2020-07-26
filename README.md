@@ -7,4 +7,3 @@ files and directories that we explicity add to the staging area
 #Git repository
 where all the snapshots are stored
 
-new text added
