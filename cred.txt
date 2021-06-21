@@ -1,0 +1,15 @@
+Result: <?xml version='1.1' encoding='UTF-8'?>
+<com.cloudbees.plugins.credentials.SystemCredentialsProvider plugin="credentials@2.4.1">
+  <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
+    <entry>
+      <com.cloudbees.plugins.credentials.domains.Domain>
+        <specifications/>
+      </com.cloudbees.plugins.credentials.domains.Domain>
+      <java.util.concurrent.CopyOnWriteArrayList>
+        <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+          <scope>G</scope>
+          <id>bit</id>
+          <description>bit</description>
+          <username>bit</username>
+          <password>{AQBBBBBBBBQXJAjShXccJrOhYjQ8z7VqtrweR0gxPGaKYyuiygGFDS=}</password>
+        </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
