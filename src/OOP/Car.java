@@ -7,6 +7,7 @@ public class Car {
     private String model;
     private String engine;
     private String color;
+    private String year;
 
     public void setModel(String model){
         String validModel = model.toLowerCase();
