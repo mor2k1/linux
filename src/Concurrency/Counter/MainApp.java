@@ -15,9 +15,11 @@ public class MainApp {
 }
 
 class Countdown {
+    private int i;
+    public void doCountdown(){ // can add synchronized here
 
-    public void doCountdown(){
         String color;
+
         switch (Thread.currentThread().getName()){
             case "Thread 1":
                 color = ThreadColor.ANSI_CYAN;
@@ -28,17 +30,22 @@ class Countdown {
             default:
                 color = ThreadColor.ANSI_GREEN;
         }
-        for (int i = 10; i > 0; i--) {
-            System.out.println(color + Thread.currentThread().getName() + ": i=" + i);
+        synchronized (this){ // synchronized between the threads. This was the threads will not share the heap.
+            for (i = 10; i > 0; i--) {
+                System.out.println(color + Thread.currentThread().getName() + ": i=" + i);
+            }
+
         }
     }
 }
 
 class CountdownThread extends Thread{
     private final Countdown threadCountdown;
-    public CountdownThread(Countdown countdown){
-        threadCountdown = countdown;
+
+    CountdownThread(Countdown threadCountdown) {
+        this.threadCountdown = threadCountdown;
     }
+
     public void run(){
         threadCountdown.doCountdown();
     }
