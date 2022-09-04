@@ -1,15 +1,15 @@
 resources:
   - name: yuval-repo
     type: GitRepo
-    configurations:
+    configuration:
       gitProvider: yuvalGithub
       path: mor2k1/linux
       branches:
-        include: master
+        include: IntelliJ
 
   - name: docker-file
     type: Image
-    configurations:
+    configuration:
       registry: yuvalArtifactory
       sourceRepository: main-repohubvirt
       imageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
@@ -18,7 +18,7 @@ resources:
 
   - name: docker-build
     type: BuildInfo
-    configurations:
+    configuration:
       sourceArtifactory: yuvalArtifactory
       buildName: docker-build-yuval
       buildNumber: ${run_number}
@@ -28,7 +28,7 @@ pipelines:
     steps:
       - name: docker_build
         type: DockerBuild
-        configurations:
+        configuration:
           affinityGroup: yuval-docker
           dockerFileName: Dockerfile
           dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
