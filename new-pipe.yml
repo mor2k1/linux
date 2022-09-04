@@ -27,7 +27,7 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: yuvalArtifactory
-      buildName: Xray_Build
+      buildName: xray_build
       buildNumber: ${run_numebr}
 
 pipelines:
@@ -46,6 +46,7 @@ pipelines:
             - name: docker_file
           integrations:
             - name: yuvalArtifactory
+            
       - name: xray_scan
         type: XrayScan
         configuration:
