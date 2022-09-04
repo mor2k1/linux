@@ -1,0 +1,40 @@
+resources:
+  - name: yuval-repo
+    type: GitRepo
+    configurations:
+      gitProvider: yuvalGithub
+      path: mor2k1/linux
+      branches:
+        include: master
+
+  - name: docker-file
+    type: Image
+    configurations:
+      registry: yuvalArtifactory
+      sourceRepository: main-repohubvirt
+      imageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
+      imageTag: latest
+      autoPull: true
+
+  - name: docker-build
+    type: BuildInfo
+    configurations:
+      sourceArtifactory: yuvalArtifactory
+      buildName: docker-build-yuval
+      buildNumber: ${run_number}
+
+pipelines:
+  - name: yuval_pipeline_build_docker
+    steps:
+      - name: docker_build
+        type: DockerBuild
+        configurations:
+          affinityGroup: yuval-docker
+          dockerFileName: Dockerfile
+          dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
+          dockerImageTag: latest
+          inputResources:
+            - name: yuval-repo
+            - name: docker-file
+          integrations:
+            - name: yuvalArtifactory
