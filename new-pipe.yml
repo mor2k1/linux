@@ -23,6 +23,13 @@ resources:
       buildName: docker_build_yuval
       buildNumber: latest
 
+  - name: build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: yuvalArtifactory
+      buildName: Xray_Build
+      buildNumber: ${run_numebr}
+
 pipelines:
   - name: yuval_pipeline_build_docker
     steps:
@@ -39,3 +46,9 @@ pipelines:
             - name: docker_file
           integrations:
             - name: yuvalArtifactory
+            
+  - name: xray_scan
+        type: XrayScan
+        configuration:
+          inputResources:
+            - name: build_info
