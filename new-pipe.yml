@@ -48,7 +48,7 @@ pipelines:
             - name: yuvalArtifactory
             
   - name: xray_scan
-        type: XrayScan
-        configuration:
-          inputResources:
-            - name: build_info
+      type: XrayScan
+      configuration:
+        inputResources:
+          - name: build_info
