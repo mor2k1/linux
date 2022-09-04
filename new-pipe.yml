@@ -29,7 +29,7 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
-          affinityGroup: yuval-docker
+          affinityGroup: yuval_docker
           dockerFileName: Dockerfile
           dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
           dockerImageTag: latest
