@@ -46,9 +46,8 @@ pipelines:
             - name: docker_file
           integrations:
             - name: yuvalArtifactory
-
-     - name: xray_scan
-       type: XrayScan
-       configuration:
-         inputResources:
-           - name: build_info
+      - name: xray_scan
+        type: XrayScan
+        configuration:
+          inputResources:
+            - name: build_info
