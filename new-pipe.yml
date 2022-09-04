@@ -1,5 +1,5 @@
 resources:
-  - name: yuval-repo
+  - name: yuval_repo
     type: GitRepo
     configuration:
       gitProvider: yuvalGithub
@@ -7,7 +7,7 @@ resources:
       branches:
         include: IntelliJ
 
-  - name: docker-file
+  - name: docker_file
     type: Image
     configuration:
       registry: yuvalArtifactory
@@ -16,11 +16,11 @@ resources:
       imageTag: latest
       autoPull: true
 
-  - name: docker-build
+  - name: docker_build
     type: BuildInfo
     configuration:
       sourceArtifactory: yuvalArtifactory
-      buildName: docker-build-yuval
+      buildName: docker_build_yuval
       buildNumber: ${run_number}
 
 pipelines:
@@ -34,7 +34,7 @@ pipelines:
           dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
           dockerImageTag: latest
           inputResources:
-            - name: yuval-repo
-            - name: docker-file
+            - name: yuval_repo
+            - name: docker_file
           integrations:
             - name: yuvalArtifactory
