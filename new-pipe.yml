@@ -12,7 +12,7 @@ resources:
     configuration:
       registry: yuvalArtifactory
       sourceRepository: main-repohubvirt
-      imageName: avigdor.jfrog.io/main-repohubvirt/ubuntu/latest
+      imageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
       imageTag: latest
       autoPull: true
 
@@ -30,6 +30,7 @@ pipelines:
         type: DockerBuild
         configuration:
           affinityGroup: yuval_docker
+          dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
           dockerImageTag: ${run_number}
