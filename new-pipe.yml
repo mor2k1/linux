@@ -35,7 +35,6 @@ pipelines:
           dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
           dockerImageTag: ${run_number}
           inputResources:
-            - name: yuval_repo
             - name: docker_file
           integrations:
             - name: yuvalArtifactory
