@@ -65,7 +65,9 @@ pipelines:
             
       - name: xray_scan
         type: XrayScan
-        configuration: 
+        configuration:
+          inputResources:
+            - name: build_info
           inputSteps: 
             - name: build
           affinityGroup: yuval_docker
