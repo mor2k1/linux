@@ -46,3 +46,14 @@ pipelines:
             - name: docker_file
           integrations:
             - name: yuvalArtifactory
+            
+    - name: build
+      type: Bash
+      configuration:
+        nodePool: assaf_node_pool
+      execution:
+        onExecute:
+          - pwd
+          - whoami
+        onSuccess:
+        echo "succes"
