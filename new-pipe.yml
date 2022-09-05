@@ -50,6 +50,7 @@ pipelines:
       - name: build
         type: Bash
         configuration:
+          affinityGroup: yuval_docker
           nodePool: assaf_node_pool
         execution:
           onExecute:
