@@ -89,8 +89,6 @@ pipelines:
           failOnScan: false
           inputResources:
             - name: build_info
-          inputSteps: 
-            - name: build_info
           affinityGroup: yuval_docker
         execution:
           onSuccess:
