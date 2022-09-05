@@ -21,7 +21,7 @@ resources:
     configuration:
       registry: yuvalArtifactory                              # <-- replace with your     MyArtifactoryifactory integration
       sourceRepository: main-repohub               # <-- required if registry is     MyArtifactoryifactory
-      imageName: avigdor.jfrog.io/main-repohub/yuval # < -- replace with your image path and name
+      imageName: avigdor.jfrog.io/main-repohubvirt/yuval # < -- replace with your image path and name
       imageTag: ${run_number}
       autoPull: true
 
