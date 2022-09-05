@@ -63,6 +63,18 @@ pipelines:
           onSuccess:
             - echo "succes"
       
+       - name: docker_push
+        type: DockerPush
+        configuration:
+          affinityGroup: yuval_docker
+          targetRepository: main-repohubvirt
+          integrations:   
+            - name: yuvalArtifactory                           # <-- new test replace with your     MyArtifactoryifactory integration
+          inputSteps:
+            - name: docker_build
+          outputResources:  
+            - name: docker_file
+      
       - name: build_info
         type: PublishBuildInfo
         configuration:
