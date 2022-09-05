@@ -69,8 +69,6 @@ pipelines:
           inputSteps: 
             - name: build
           affinityGroup: yuval_docker
-        inputResources:
-          - name: build_info
         execution:
           onSuccess:
             - echo "succes to run Xray Scan"
