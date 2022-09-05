@@ -33,7 +33,7 @@ resources:
 pipelines:
   - name: yuval_pipeline_build_docker
     steps:
-      - name: docker_build
+      - name: docker_build_step
         type: DockerBuild
         configuration:
           affinityGroup: yuval_docker
@@ -54,7 +54,7 @@ pipelines:
           runtime:
             type: host
           inputSteps:
-            - name: docker_build
+            - name: docker_build_step
         execution:
           onExecute:
             - pwd
