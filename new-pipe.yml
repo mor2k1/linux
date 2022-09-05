@@ -87,6 +87,7 @@ pipelines:
       - name: build_info
         type: PublishBuildInfo
         configuration:
+          affinityGroup: yuval_docker
           inputSteps:
             - name: docker_push
           outputResources:
