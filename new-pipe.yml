@@ -76,7 +76,7 @@ pipelines:
         type: DockerPush
         configuration:
           affinityGroup: yuval_docker
-          targetRepository: main-repohubvirt
+          targetRepository: main-repohub
           integrations:   
             - name: yuvalArtifactory                           # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
