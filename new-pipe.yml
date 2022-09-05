@@ -47,7 +47,7 @@ pipelines:
           integrations:
             - name: yuvalArtifactory
             
-      - name: xray_scan
+      - name: xrayscan
         type: XrayScan
         configuration:
           inputResources:
