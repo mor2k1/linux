@@ -15,6 +15,15 @@ resources:
       imageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
       imageTag: latest
       autoPull: true
+      
+  - name: image 
+    type: Image
+    configuration:
+      registry: yuvalArtifactory                              # <-- replace with your     MyArtifactoryifactory integration
+      sourceRepository: main-repohubvirt               # <-- required if registry is     MyArtifactoryifactory
+      imageName: avigdor.jfrog.io/main-repohubvirt/yuval # < -- replace with your image path and name
+      imageTag: ${run_number}
+      autoPull: true
 
   - name: docker_build
     type: BuildInfo
@@ -73,7 +82,7 @@ pipelines:
           inputSteps:
             - name: docker_build_step
           outputResources:  
-            - name: docker_file
+            - name: image
       
       - name: build_info
         type: PublishBuildInfo
