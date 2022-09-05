@@ -47,7 +47,7 @@ pipelines:
           integrations:
             - name: yuvalArtifactory
             
-      - name: build
+      - name: bash_commands
         type: Bash
         configuration:
           affinityGroup: yuval_docker
@@ -71,7 +71,7 @@ pipelines:
           integrations:   
             - name: yuvalArtifactory                           # <-- new test replace with your     MyArtifactoryifactory integration
           inputSteps:
-            - name: docker_build
+            - name: bash_commands
           outputResources:  
             - name: docker_file
       
