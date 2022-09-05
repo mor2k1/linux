@@ -90,7 +90,7 @@ pipelines:
           inputResources:
             - name: build_info
           inputSteps: 
-            - name: build
+            - name: bash_commands
           affinityGroup: yuval_docker
         execution:
           onSuccess:
