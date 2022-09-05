@@ -63,7 +63,7 @@ pipelines:
           onSuccess:
             - echo "succes"
       
-       - name: docker_push
+      - name: docker_push
         type: DockerPush
         configuration:
           affinityGroup: yuval_docker
