@@ -62,8 +62,8 @@ pipelines:
           affinityGroup: yuval_docker
           runtime:
             type: host
-          inputSteps:
-           - name: docker_build_step
+#           inputSteps:
+#            - name: docker_build_step
         execution:
           onStart:
             - env
